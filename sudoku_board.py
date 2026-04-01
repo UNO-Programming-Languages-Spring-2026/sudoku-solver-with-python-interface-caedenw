@@ -8,7 +8,22 @@ class Sudoku:
 
     def __str__(self) -> str:
         s = ""
-        # YOUR CODE HERE
+        newLine = True
+        for row in range(1, 10):
+            for column in range(1, 10):
+                if newLine == True:
+                    newLine = False
+                    s = s + f'{self.sudoku[row, column]}'
+                else:
+                    if ((column-1) % 3) == 0:
+                        s = s + f'  {self.sudoku[row, column]}'
+                    else:
+                        s = s + f' {self.sudoku[row, column]}'
+            if ((row % 3)) == 0:
+                s = s + '\n\n'
+            else:
+                s = s + '\n'
+            newLine = True
         return s
 
     @classmethod
