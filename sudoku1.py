@@ -12,7 +12,17 @@ class SudokuSolver(clingo.application.Application):
             control.load('-')
         control.ground()
         control.solve()
-
+    
+    def print_model(self, model, printer):
+        symbols = sorted(model.symbols(shown=True))
+        symbolsStr = ''
+        for symbol in symbols:
+            if (len(symbolsStr) != 0):
+                symbolsStr = f'{symbolsStr} {str(symbol)}'
+            else:
+                symbolsStr = str(symbol)
+        print(symbolsStr)
+        sys.stdout.flush()
 
 class Sudoku:
     def __init__(self, sudoku: dict[Tuple[int, int], int]):
