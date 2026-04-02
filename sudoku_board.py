@@ -29,7 +29,26 @@ class Sudoku:
     @classmethod
     def from_str(cls, s: str) -> "Sudoku":
         sudoku = {}
-        # YOUR CODE HERE
+        numDict = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+        
+        currentCharIndex = 0
+        currentChar = s[currentCharIndex]
+        for row in range(1, 10):
+            column = 1
+            while (column < 10):
+                if (s[currentCharIndex] == '-'):
+                    '''sudoku[(row, column)] = '-'''
+                    column = column + 1
+                    pass
+                elif (s[currentCharIndex] == ' '):
+                    pass
+                elif (s[currentCharIndex] in numDict):
+                    sudoku[(row, column)] = int(s[currentCharIndex])
+                    column = column + 1
+                else:
+                    pass
+                currentCharIndex = currentCharIndex + 1
+                currentChar = s[currentCharIndex]
         return cls(sudoku)
 
     @classmethod
